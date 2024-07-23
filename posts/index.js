@@ -3,9 +3,11 @@ import { randomBytes } from "crypto";
 
 const app = express();
 import bodyParser from "body-parser";
+import cors from "cors";
 const posts = {};
 
 app.use(bodyParser.json());
+app.use(cors());
 app.get("/posts", (req, res) => {
   res.send(posts);
 });
@@ -21,6 +23,6 @@ app.post("/posts", (req, res) => {
   res.status(201).send(posts[id]);
 });
 
-app.listen(4000, () => {
+app.listen(4001, () => {
   console.log("ok");
 });
